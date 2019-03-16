@@ -1,5 +1,6 @@
 var io = require('socket.io-client');
 var socket = io('http://joshuayuan.me:8080');
+var leapjs = require("leapjs");
 const readline = require('readline');
 
 const r1 = readline.createInterface({
@@ -7,15 +8,22 @@ const r1 = readline.createInterface({
   output: process.stdout
 });
 
-var readlineLoop = function () {
-  r1.question("type something: ", (value) => {
-    console.log("value is \'" + value + "\'");
-    socket.emit("client:server", value);
-    readlineLoop();
-  });
+var controller = new leapjs.Controller();
 
-};
+controller.on("connect", () => console.log("Successfully connected."));
+controller.on("deviceStreaming", () => console.log("A Leap device has been connected."));
+controller.on("deviceStopped", () => console.log("A Leap device has been disconnected."));
 
-socket.on('connect', function() {
-  readlineLoop();
+controller.connect();
+
+var numberOfFingers = 0;
+controller.on('deviceFrame', function(frame) {
+  var currNumFingers = frame.fingers.length;
+  if (numberOfFingers != currNumFingers) {
+    numberOfFingers = currNumFingers;
+    socket.emit("client:server", numberOfFingers);
+    console.log(numberOfFingers);
+  }
 });
+
+
