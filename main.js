@@ -16,4 +16,6 @@ io.on("connection", function(socket) {
     console.log("server received \'", data, "\'");
     io.emit("server:website", data);
   });
+
+  socket.on("disconnect", () => console.log("a client disconnected"));
 });

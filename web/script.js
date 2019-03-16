@@ -1,2 +1,4 @@
 var socket = io();
-socket.on("server:website", (data) => console.log(data));
+socket.on("server:website", (data) => {
+  $("#num_fingers").text(data);
+});
