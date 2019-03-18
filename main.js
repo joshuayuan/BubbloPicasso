@@ -9,6 +9,12 @@ app.get('/', function (req, res) {
 app.get("/script.js", function(req, res) {
   res.sendFile(__dirname + "/web/script.js");
 });
+app.get("/p5.min.js", function(req, res) {
+  res.sendFile(__dirname + "/web/p5.min.js");
+});
+app.get("/sketch.js", function(req, res) {
+  res.sendFile(__dirname + "/web/sketch.js");
+});
 
 io.on("connection", function(socket) {
   console.log("a client connected"); // website, or leap client
