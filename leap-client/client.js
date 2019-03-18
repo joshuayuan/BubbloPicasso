@@ -30,10 +30,10 @@ controller.on('deviceFrame', function(frame) {
     for (var i = 0; i < frame.hands.length; i++) {
       var hand = frame.hands[i];
       var currPalmPosition = hand.palmPosition;
-      if (vectorDist(currPalmPosition, palmPosition) > 5) {
+      if (vectorDist(currPalmPosition, palmPosition) > 10) {
         palmPosition = currPalmPosition;
         console.log(currPalmPosition);
-        socket.emit("client:server", {"hand_pos": vectorToString(palmPosition)});
+        socket.emit("client:server", {"hand_pos": vectorToJson(palmPosition)});
       }
     }
   }
@@ -50,5 +50,9 @@ function vectorToString(vector, digits) {
   return "(" + vector[0].toFixed(digits) + ", "
              + vector[1].toFixed(digits) + ", "
              + vector[2].toFixed(digits) + ")";
+};
+
+function vectorToJson(vector) {
+  return {"x": vector[0].toFixed(0), "y": vector[1].toFixed(0), "z": vector[2].toFixed(0)};
 };
 
