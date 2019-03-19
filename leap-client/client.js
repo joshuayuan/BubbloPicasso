@@ -64,6 +64,6 @@ function vectorToJson(vector) {
 };
 
 
-controller.on("deviceDisconnected", function(resp) {
+controller.on("streamingStopped", function(resp) {
   console.log("leap disconnected: ", resp);
 });
