@@ -15,25 +15,32 @@ controller.on("deviceStreaming", () => console.log("A Leap device has been conne
 controller.on("deviceStopped", () => console.log("A Leap device has been disconnected."));
 
 controller.connect();
+socket.on("disconnect", function(resp) {
+  console.log("socket disconnected:", resp);
+});
+socket.on("connect", function(resp) {
+  console.log("socket connected");
+});
 
-var numberOfFingers = 0;
+var numberOfHands = 0;
 var palmPosition = [0, 0, 0]; // [x, y, z]
 controller.on('deviceFrame', function(frame) {
-  var currNumFingers = frame.fingers.length;
-  if (numberOfFingers != currNumFingers) {
-    numberOfFingers = currNumFingers;
-    socket.emit("client:server", {"num_fingers": numberOfFingers});
-    console.log(numberOfFingers);
+  var currNumHands = frame.hands.length;
+  if (numberOfHands != currNumHands) {
+    numberOfHands = currNumHands;
+    socket.emit("client:server", {"num_hands": numberOfHands});
+    console.log(numberOfHands);
   }
 
-  if (frame.hands.length > 0) {
-    for (var i = 0; i < frame.hands.length; i++) {
+  if (numberOfHands > 0) {
+    for (var i = 0; i < numberOfHands; i++) {
       var hand = frame.hands[i];
       var currPalmPosition = hand.palmPosition;
       if (vectorDist(currPalmPosition, palmPosition) > 10) {
         palmPosition = currPalmPosition;
         console.log(currPalmPosition);
-        socket.emit("client:server", {"hand_pos": vectorToJson(palmPosition)});
+        socket.emit("client:server", {"hand": {"hand_type": hand.type, "hand_pos": vectorToJson(palmPosition)}});
+        // socket.emit("client:server", {"hand_pos": vectorToJson(palmPosition)});
       }
     }
   }
@@ -56,3 +63,7 @@ function vectorToJson(vector) {
   return {"x": vector[0].toFixed(0), "y": vector[1].toFixed(0), "z": vector[2].toFixed(0)};
 };
 
+
+controller.on("deviceDisconnected", function(resp) {
+  console.log("leap disconnected: ", resp);
+});
