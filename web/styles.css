@@ -1,0 +1,26 @@
+body {
+}
+#title {
+  text-align: center;
+}
+
+#slogan {
+  text-align: center;
+}
+
+#outer_frame {
+  border: 2px solid black;
+  width: 800px;
+  padding: 20px 20px 100px 20px;
+  margin: 0 auto;
+}
+
+#buttons {
+  text-align: center;
+}
+
+#buttons i {
+  margin: 20px;
+}
+
+

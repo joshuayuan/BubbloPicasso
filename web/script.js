@@ -7,18 +7,18 @@ socket.on("server:website", (data) => {
   if (typeof hands !== "undefined") {
     let hand_type = hands["hand_type"];
     if (hand_type == "right") {
-      // Scale from [-300, 300] to [0, 600], then to [0, 400]
+      // Scale from [-300, 300] to [0, 600], then to [0, 800]
       // Canvas size is 400x400
-      let x = (parseInt(hands["hand_pos"]["x"]) + 300)/1.5;
-      let z = (parseInt(hands["hand_pos"]["z"]) + 300)/1.5;
+      let x = (parseInt(hands["hand_pos"]["x"]) + 300)/.75;
+      let z = (parseInt(hands["hand_pos"]["z"]) + 300)/.75;
       console.log(x, z);
       right_points.push([x, z]);
 
     } else if (hand_type== "left") {
-      // Scale from [-300, 300] to [0, 600], then to [0, 400]
+      // Scale from [-300, 300] to [0, 600], then to [0, 800]
       // Canvas size is 400x400
-      let x = (parseInt(hands["hand_pos"]["x"]) + 300)/1.5;
-      let z = (parseInt(hands["hand_pos"]["z"]) + 300)/1.5;
+      let x = (parseInt(hands["hand_pos"]["x"]) + 300)/.75;
+      let z = (parseInt(hands["hand_pos"]["z"]) + 300)/.75;
       console.log(x, z);
       left_points.push([x, z]);
     }
@@ -27,11 +27,12 @@ socket.on("server:website", (data) => {
 
 var opaque_black;
 function setup() {
-  createCanvas(400, 400);
+  var canvas = createCanvas(800, 800);
+  canvas.parent("outer_frame");
 }
 
 function draw() {
-  background(255);
+  background(250);
 
   strokeWeight(10);
   stroke(0, 0, 0, 50);
