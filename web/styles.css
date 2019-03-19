@@ -10,7 +10,7 @@ body {
 
 #outer_frame {
   border: 2px solid black;
-  width: 800px;
+  width: 600px;
   padding: 20px 20px 100px 20px;
   margin: 0 auto;
 }
@@ -21,6 +21,10 @@ body {
 
 #buttons i {
   margin: 20px;
+}
+
+#buttons i:hover {
+  cursor: pointer;
 }
 
 
