@@ -19,10 +19,12 @@ body {
 }
 
 #defaultCanvas0 {
-  padding: 50px;
-  background-image: url("/assets/frame3.png");
-  background-size: 700px;
-  border: 2px solid;
+  display: block;
+  margin: 0 auto;
+  padding: 100px;
+  background-image: url("/assets/frame1.png");
+  background-size: 800px;
+  background-repeat: no-repeat;
 }
 
 #frame {
@@ -36,11 +38,14 @@ body {
 }
 
 #buttons img {
+  width: 50px;
   margin: 20px;
 }
 
 #buttons img:hover {
   cursor: pointer;
+  margin: 15px;
+  width: 60px;
 }
 
 
