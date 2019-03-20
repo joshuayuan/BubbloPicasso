@@ -1,29 +1,45 @@
 body {
 }
 #title {
-  text-align: center;
+  display: block;
+  margin: 0 auto;
+  width: 800px;
 }
 
 #slogan {
+  display: block;
+  margin: 0 auto;
+  width: 600px;
+}
+
+#frame_container{
+  width: auto;
+  margin: 0 auto;
   text-align: center;
 }
 
-#outer_frame {
-  border: 2px solid black;
-  width: 600px;
-  padding: 20px 20px 100px 20px;
+#defaultCanvas0 {
+  padding: 50px;
+  background-image: url("/assets/frame3.png");
+  background-size: 700px;
+  border: 2px solid;
+}
+
+#frame {
+  display: block;
   margin: 0 auto;
+  width: 800px;
 }
 
 #buttons {
   text-align: center;
 }
 
-#buttons i {
+#buttons img {
   margin: 20px;
 }
 
-#buttons i:hover {
+#buttons img:hover {
   cursor: pointer;
 }
 

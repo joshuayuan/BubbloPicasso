@@ -29,7 +29,7 @@ var opaque_black;
 var canvas;
 function setup() {
   canvas = createCanvas(600, 600);
-  canvas.parent("outer_frame");
+  canvas.parent("frame_container");
 }
 
 function draw() {
