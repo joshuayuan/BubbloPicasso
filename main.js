@@ -11,6 +11,9 @@ app.get('/', function (req, res) {
 app.get("/script.js", function(req, res) {
   res.sendFile(__dirname + "/web/script.js");
 });
+app.get("/jquery.min.js", function(req, res) {
+  res.sendFile(__dirname + "/web/jquery.min.js");
+});
 app.get("/p5.min.js", function(req, res) {
   res.sendFile(__dirname + "/web/p5.min.js");
 });
