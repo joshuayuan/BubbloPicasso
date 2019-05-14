@@ -1,4 +1,5 @@
 var io = require('socket.io-client');
+// var socket = io('http://localhost:8888');
 var socket = io('http://joshuayuan.me:8888');
 var leapjs = require("leapjs");
 
