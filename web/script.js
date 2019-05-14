@@ -43,14 +43,14 @@ function draw() {
   for( let i = 1; i < right_points.length; i++) {
     if (dist(right_points[i][0], right_points[i][2], right_points[i-1][0], right_points[i-1][2]) < 20) {
       strokeWeight(right_points[i][1]);
-      stroke(i % 360, 75, 90);
+      stroke(i % 360, 75, 90, 30);
       line(right_points[i-1][0], right_points[i-1][2], right_points[i][0], right_points[i][2]);
     }
   }
   for (let i = 1; i < left_points.length; i++ ) {
     if (dist(left_points[i][0], left_points[i][2], left_points[i-1][0], left_points[i-1][2]) < 20) {
       strokeWeight(left_points[i][1]);
-      stroke(i % 360, 75, 90);
+      stroke(i % 360, 75, 90, 30);
       line(left_points[i-1][0], left_points[i-1][2], left_points[i][0], left_points[i][2]);
     }
   }
